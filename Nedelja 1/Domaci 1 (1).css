@@ -1,0 +1,42 @@
+
+.header{
+    text-align: center;
+}
+.slika1{
+    background-image: url("https://cdn.pixabay.com/photo/2017/05/12/08/29/coffee-2306471__480.jpg");
+    width:180px;
+    height:170px;
+}
+*{
+    box-sizing: border-box;
+
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.side{
+    height: 300px;
+  }
+
+.box{
+    top: 180px;
+    display: flex;
+    flex-wrap: wrap;
+}
+form{
+    border: groove;
+    color:red
+ }
+.bouth_gender{
+    color: black;
+}
+.all_courses{
+    color: black;
+}
+.main {
+    float: left;
+    width: 70%;
+    
+    height: 654px;
+  }
