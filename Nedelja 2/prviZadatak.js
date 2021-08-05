@@ -1,0 +1,36 @@
+/*1. Puz se penje uz drvo odredjenom brzinom (recimo da predje 3cm da dan).
+Drvo svaki dan poraste za 1 cm.
+
+Za zadatu brzinu puza (u centrimetrima po danu) i zadatu pocetnu visinu drveta (u centimetrima),
+izracunati koliko je dana potrebno puzu da se popne na drvo
+pomocu WHILE petlje.
+
+Napraviti presek svakog dana, dakle program treba da izbaci sledece poruke (za brzinu puza 3 i visinu drveta 100) :
+
+Dan 1: Puz je presao 3cm, visina drveta 100cm
+Dan 2: Puz je presao 6cm, visina drveta 101cm
+...
+
+Na kraju treba da se ispise poruka na primer:
+
+Puz se popeo na drvo za 8 dana
+
+Smatrati da drvo svakog dana raste fiksno 1cm.*/
+
+let brzinaPuza = 3
+let n = brzinaPuza
+let brzinaRastaDrveta = 1
+let pocetnaVisinaDrveta = 101
+let dan = 1
+
+if (brzinaPuza <= brzinaRastaDrveta) {
+    console.log(`Puz se nikada nece popeti na vrh drveta!`)
+} else {
+    while (brzinaPuza <= pocetnaVisinaDrveta && dan <= pocetnaVisinaDrveta) {
+        console.log(`Dan ` + dan + `. : puz je presao ` + brzinaPuza + ` cm, visina drveta je ` + pocetnaVisinaDrveta + ` cm`);
+        brzinaPuza += n
+        pocetnaVisinaDrveta++
+        dan++
+    }
+    console.log(`Puz se popeo na drvo za ` + (dan -= 1) + ` dana.`)
+}
