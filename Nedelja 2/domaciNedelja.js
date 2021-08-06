@@ -1,0 +1,31 @@
+/**--------------------
+Nacrtati dijamant kao na primeru:
+
+     *
+    ***
+   *****
+  *******
+ *********
+  *******
+   *****
+    ***
+     *
+
+
+ ---------------------*/
+
+
+let N = 4
+let prviRed = `*`
+
+console.log(` `.repeat(N) + prviRed)
+
+for (let i = 1; i <= N; i++) {
+    prviRed += `**`
+    console.log(` `.repeat(N - i) + prviRed)
+}
+
+let srednjiRed = `*`.repeat(N * 2 - 1)
+for (let i = 1; i <= N; i++) {
+    console.log(` `.repeat(i) + `*`.repeat(N - i) + `*`.repeat(N - i + 1))
+}
