@@ -1,1 +1,6 @@
-# ITBootcamp -homeworks
+# ITBootcamp-homeworks
+
+-HTML
+-CSS
+-JavaScript
+-React
