@@ -1,4 +1,4 @@
-# ITBootcamp-homeworks
+# ITBootcamp-Homeworks
 
 -HTML
 -CSS
