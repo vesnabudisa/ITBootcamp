@@ -1,0 +1,160 @@
+body {
+    background-color: white;
+    margin: 15px;
+}
+.forma {
+    margin-left: 25%;
+    padding: 20px 12px 10px 20px;
+    
+}
+.forma .tip,
+.forma #opis,
+.forma #iznos,
+.forma .potvrdi{
+    border: none;
+	padding: 8px 15px 8px 15px;
+	background: white;
+	color: rgb(138, 131, 32);
+	box-shadow: 5px 5px 5px #eceaea;
+	-moz-box-shadow: 5px 5px 5px #eceaea;
+	-webkit-box-shadow: 5px 5px 5px #eceaea;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.prihodi-label {
+	color: rgb(175, 79, 14);
+    display: inline-block;
+    margin-left: 200px;
+}
+.rashodi-label {
+	color: rgb(110, 49, 6);
+    display: inline-block;
+    margin-left: 200px;
+}
+.podaci{
+    background-color: darkkhaki;
+}
+
+.prihodi {
+    display:inline-block;
+    margin:10px 20px;
+	margin-left: 110px;
+	width: 500px;
+    background-color: darkkhaki;
+}
+.rashodi {
+    display: inline-block;
+	width: 500px;
+    margin:10px 20px;
+    background-color: darkkhaki;
+
+}
+.forma .input-opis,
+.forma .input-iznos,
+.forma .select-tip,
+.forma .potvrdi {
+    display: inline-block;
+}
+#input-opis {
+    padding-right: 100px;
+}
+#input-iznos {
+    padding-left: 100px;
+}
+#procenat {
+    padding-left: 10px;
+}
+.obrisi {
+    margin-left: 10px;
+}
+p{
+    display: inline-block;
+}
+
+.transakcija-prihod {
+    padding: 20px 40px;
+    border: none;
+	background: rgb(238, 142, 64);
+	color: #fff;
+	box-shadow: 1px 1px 4px #eceaea;
+	-moz-box-shadow: 1px 1px 4px #eceaea;
+	-webkit-box-shadow: 1px 1px 4px #eceaea;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.transakcija-rashod {
+    padding: 20px 40px;
+    border: none;
+	background: rgb(85, 72, 61);
+	color: #fff;
+	box-shadow: 1px 1px 4px #eceaea;
+	-moz-box-shadow: 1px 1px 4px #eceaea;
+	-webkit-box-shadow: 1px 1px 4px #eceaea;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.ukupni-prihod{
+    display: inline-block;
+    width: 100px;
+    padding: 20px 40px;
+    border: none;
+	background: rgb(238, 142, 64);
+	color: #fff;
+	box-shadow: 1px 1px 4px #eceaea;
+	-moz-box-shadow: 1px 1px 4px #eceaea;
+	-webkit-box-shadow: 1px 1px 4px #eceaea;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.ukupni-rashod{
+    display: inline-block;
+    width: 100px;
+    padding: 20px 40px;
+    border: none;
+	background: rgb(85, 72, 61);
+	color: #fff;
+	box-shadow: 1px 1px 4px #eceaea;
+	-moz-box-shadow: 1px 1px 4px #eceaea;
+	-webkit-box-shadow: 1px 1px 4px #eceaea;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.preostali-budzet {
+    display: inline-block;
+    width:100px;
+    padding: 20px 40px;
+    border: none;
+	background-color :darkkhaki;
+	color: #fff;
+	box-shadow: 2px 2px 4px #eceaea;
+	-moz-box-shadow: 2px 2px 4px #eceaea;
+	-webkit-box-shadow: 2px 2px 4px #eceaea;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+.konacni-podaci{
+    margin-left: 27%;
+}
+.error {
+    color:rgb(238, 25, 25)
+}
+
+.obrisi {
+    display: none;
+    border: none;
+	padding: 8px 15px 8px 15px;
+	background: white;
+	color: rgb(138, 131, 32);
+	box-shadow: 1px 1px 2px #eceaea;
+	-moz-box-shadow:  1px 1px 2px #eceaea;
+	-webkit-box-shadow:  1px 1px 2px #eceaea;
+    border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
