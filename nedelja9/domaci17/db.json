@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "name": "Lambcasing",
+      "price": 8.18,
+      "info": "Morbi a ipsum. Integer a nibh.",
+      "id": "7bce9000-afae-4de7-bfa4-848b578047de"
+    },
+    {
+      "name": "Cookies - Englishbay Oatmeal",
+      "price": 8.49,
+      "info": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum. Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
+      "id": "bf85971e-096f-4cca-bd1b-8a2910249ec4"
+    },
+    {
+      "name": "Wine - Stoneliegh Sauvignon",
+      "price": 7.74,
+      "info": "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.",
+      "id": "31756582-6055-4148-a487-28a3a0197cca"
+    },
+    {
+      "name": "Bok Choy - Baby",
+      "price": 0.23,
+      "info": "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci.",
+      "id": "03d710af-89ae-4808-89ad-a8ae6101b620"
+    },
+    {
+      "name": "Coke",
+      "price": 2,
+      "info": "drink, soda bla bla",
+      "id": "DVBri3j"
+    },
+    {
+      "name": "Salt",
+      "price": 80,
+      "info": "nkcjndkj",
+      "id": "80Xcmyo"
+    }
+  ]
+}
