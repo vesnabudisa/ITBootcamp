@@ -1,0 +1,298 @@
+//nadovezivanje na 3 zadatak sa predhodnog domaceg
+//1. Napraviti html strukturu da se na pocetku vide 2 button-a. Kada se klikne na oba (naravno ponaosob), 
+//trebaju se izlistati svi pokemoni iz niza u svom dugmetu. Na klik jednog dugmeta, trebaju se izlistati
+//sve informacije o tom pokemonu.
+let pokemons = [{
+    name: `Charmeleon`,
+    species: `Flame Pokemon`,
+    abilities: [`Blaze`, `Solar Power`],
+    caracteristics: { attack: 64, defence: 58, speed: 80, }
+},
+{
+    name: `Squirtle`,
+    species: `Tiny Turtle Pokémon`,
+    abilities: [`Torrent`, `Rain Dish`],
+    caracteristics: { attack: 48, defence: 65, speed: 43, }
+},
+{
+    name: `Slowpoke`,
+    species: `Dopey Pokemon`,
+    abilities: [`Oblivious`, `Own Tempo`],
+    caracteristics: { attack: 65, defence: 65, speed: 15, }
+},
+{
+    name: `Tangela`,
+    species: `Vine Pokemon`,
+    abilities: [`Chlorophyll`, `Leaf Guard`],
+    caracteristics: { attack: 55, defence: 115, speed: 60, }
+}]
+
+let btnPlayer1 = document.querySelector(`#player1`)
+
+btnPlayer1.addEventListener(`click`, () => {
+    let div1 = document.querySelector(`.pokemons`)
+
+    let btnPok1 = document.createElement(`button`)
+    btnPok1.textContent = `Charmeleon`
+    let btnPok2 = document.createElement(`button`)
+    btnPok2.textContent = `Squirtle`
+    let btnPok3 = document.createElement(`button`)
+    btnPok3.textContent = `Slowpoke`
+    let btnPok4 = document.createElement(`button`)
+    btnPok4.textContent = `Tangela`
+
+    div1.append(btnPok1, btnPok2, btnPok3, btnPok4)
+    btnPlayer1.replaceWith(div1)
+
+    btnPok1.addEventListener(`click`, () => {
+        let firstPokemon = document.querySelector(`.firstPokemon`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[0].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[0].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[0].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[0].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[0].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[0.].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        firstPokemon.append(div)
+
+        btnPok1.replaceWith(firstPokemon)
+    })
+
+    btnPok2.addEventListener(`click`, () => {
+        let secondPokemon = document.querySelector(`.secondPokemon`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[1].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[1].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[1].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[1].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[1].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[1].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        secondPokemon.append(div)
+
+        btnPok2.replaceWith(secondPokemon)
+    })
+
+    btnPok3.addEventListener(`click`, () => {
+        let thirdPokemon = document.querySelector(`.thirdPokemon`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[2].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[2].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[2].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[2].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[2].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[2].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        thirdPokemon.append(div)
+
+        btnPok3.replaceWith(thirdPokemon)
+    })
+
+    btnPok4.addEventListener(`click`, () => {
+        let fourthPokemon = document.querySelector(`.fourthPokemon`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[3].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[3].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[3].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[3].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[3].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[3].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        fourthPokemon.append(div)
+
+        btnPok4.replaceWith(fourthPokemon)
+    })
+
+})
+
+let btnPlayer2 = document.querySelector(`#player2`)
+
+btnPlayer2.addEventListener(`click`, () => {
+    let div2 = document.querySelector(`.pokemons2`)
+
+    let btnPok1 = document.createElement(`button`)
+    btnPok1.textContent = `Charmeleon`
+    let btnPok2 = document.createElement(`button`)
+    btnPok2.textContent = `Squirtle`
+    let btnPok3 = document.createElement(`button`)
+    btnPok3.textContent = `Slowpoke`
+    let btnPok4 = document.createElement(`button`)
+    btnPok4.textContent = `Tangela`
+
+    div2.append(btnPok1, btnPok2, btnPok3, btnPok4)
+    btnPlayer2.replaceWith(div2)
+
+    btnPok1.addEventListener(`click`, () => {
+        let firstPokemon = document.querySelector(`.firstPokemon2`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[0].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[0].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[0].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[0].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[0].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[0.].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        firstPokemon.append(div)
+
+        btnPok1.replaceWith(firstPokemon)
+    })
+
+    btnPok2.addEventListener(`click`, () => {
+        let secondPokemon = document.querySelector(`.secondPokemon2`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[1].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[1].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[1].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[1].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[1].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[1].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        secondPokemon.append(div)
+
+        btnPok2.replaceWith(secondPokemon)
+    })
+
+    btnPok3.addEventListener(`click`, () => {
+        let thirdPokemon = document.querySelector(`.thirdPokemon2`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[2].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[2].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[2].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[2].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[2].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[2].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        thirdPokemon.append(div)
+
+        btnPok3.replaceWith(thirdPokemon)
+    })
+
+    btnPok4.addEventListener(`click`, () => {
+        let fourthPokemon = document.querySelector(`.fourthPokemon2`)
+
+        let div = document.createElement(`div`)
+
+        let h3 = document.createElement(`h3`)
+        h3.textContent = pokemons[3].name
+
+        let p1 = document.createElement(`p`)
+        p1.textContent = `Species: ` + pokemons[3].species
+
+        let p2 = document.createElement(`p`)
+        p2.textContent = `Abilities: ` + pokemons[3].abilities
+
+        let p3 = document.createElement(`p`)
+        p3.textContent = `Attack: ` + pokemons[3].caracteristics.attack
+
+        let p4 = document.createElement(`p`)
+        p4.textContent = `Defence: ` + pokemons[3].caracteristics.defence
+
+        let p5 = document.createElement(`p`)
+        p5.textContent = `Speed: ` + pokemons[3].caracteristics.speed
+
+        div.append(h3, p1, p2, p3, p4, p5)
+        fourthPokemon.append(div)
+
+        btnPok4.replaceWith(fourthPokemon)
+    })
+
+})
