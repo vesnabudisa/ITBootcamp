@@ -1,0 +1,196 @@
+// Napisati validaciju za formu koja sadrzi polja: 
+// input-text(name, surname, password, passwordConfirm) 
+// checkbox(courses)
+// select(city)
+// radiobutton(gender)
+// Za polje name => obavezno, minimum 5 karaktera, maksimum 15
+// Za polje surname => obavezno, minimum 5 karaktera, maksimum 20
+// Za polje password => obavezno, minimum 8 karaktera, da sadrzi broj i veliko slovo
+// Za polje passwordConfirm => da je isto kao i password
+// Za polje course => obavezno
+
+//klikom na register ako validacija ne prodje ispisati greske ispod polja (za svako polje ponaosob)
+//ako validacija prodje, kreirati objekat user ubaciti ga u niz users i ispisati ga na ekranu (ispisati ceo niz)
+//kada se kreira user: 1. ime i prezime mora biti trimovano i setovati samo prvo slovo kao veliko a sva ostala da budu mala
+//nakon svakog unosa potrebno je ispisati novog user-a i obrisati sve inpute (staviti ih na pocetne vrednosti)
+
+//HTML I CSS po sopstvenom izboru!!!!!!!!!!!!!!!
+
+const divRegister = document.querySelector(`.register`)
+const divName = document.querySelector(`.first_name`)
+const divSurname = document.querySelector(`.last_name`)
+const divPassword = document.querySelector(`.password`)
+const divConfirm = document.querySelector(`.confirm_pass`)
+const divGender = document.querySelector(`.gender`)
+const divCities = document.querySelector(`.cities`)
+const divCourses = document.querySelector(`.courses`)
+const divContainer = document.querySelector(`.item_container`)
+const divItemList = document.querySelector(`.item_list`)
+const btnRegister = document.querySelector(`#btn-submit`)
+
+const inputName = document.querySelector(`#name`)
+const inputSurname = document.querySelector(`#surname`)
+const inputPassword = document.querySelector(`#pass`)
+const inputConfirm = document.querySelector(`#passConfig`)
+const inputMale = document.querySelector(`#male`)
+const inputFemale = document.querySelector(`#female`)
+const inputCities = document.querySelector(`select`)
+
+
+let users = []
+
+function addToDom(user) {
+
+    const itemUser = document.createElement(`div`)
+    itemUser.className = `item`
+    itemUser.innerHTML = `<p>User Name: ${user.userName}</p>
+    <p>User Surname: ${user.userSurname}</p>
+    <p>User Gender: ${user.userGender}</p>
+    <p>City: ${user.userCity}</p>
+    <p>Courses: ${user.userCourses}</p>`
+
+    divItemList.append(itemUser)
+}
+
+function stringIncludesUpperCase(string) {
+    char = /[A-Z]/
+    return char.test(string)
+}
+
+function stringIncludesNumber(string) {
+    number = /\d/
+    return number.test(string)
+}
+
+
+btnRegister.addEventListener(`click`, () => {
+
+    let users = []
+
+    let allCheckboxes = []
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked')
+
+    for (let i = 0; i < checkboxes.length; i++) {
+        allCheckboxes.push(checkboxes[i].value)
+    }
+
+    let radioBtn
+    if (document.querySelector('input[type=radio]:checked') == null) {
+        radioBtn = `Not specified`
+    } else {
+        radioBtn = (document.querySelector('input[type=radio]:checked')).value
+    }
+
+    let isValid = true
+
+    const errorName = document.createElement(`label`)
+    if (inputName.value == ``) {
+        errorName.innerHTML = `This field is required`
+        divName.appendChild(errorName)
+        isValid = false
+    } else if (inputName.value.length < 5) {
+        errorName.innerHTML = `This field must contain minimum five caracters`
+        divName.appendChild(errorName)
+        isValid = false
+    } else if (inputName.value.length > 15) {
+        errorName.innerHTML = `This field must contain less than fifteen caracters`
+        divName.appendChild(errorName)
+        isValid = false
+    }
+
+    const errorSurname = document.createElement(`label`)
+    if (inputSurname.value == ``) {
+        errorSurname.innerHTML = `This field is required`
+        divSurname.appendChild(errorSurname)
+        isValid = false
+    } else if (inputSurname.value.length < 5) {
+        errorSurname.innerHTML = `This field must contain minimum five caracters`
+        divSurname.appendChild(errorSurname)
+        isValid = false
+    } else if (inputSurname.value.length > 20) {
+        errorSurname.innerHTML = `This field must contain less than twenty  caracters`
+        divSurname.appendChild(errorSurname)
+        isValid = false
+    }
+
+    const errorPassword = document.createElement(`label`)
+    if (inputPassword.value == ``) {
+        errorPassword.innerHTML = `This field is required`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+    }
+    if (inputPassword.value.length > 8) {
+        errorPassword.innerHTML = `This field must include at least eight caracters`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+        console.log(inputPassword.value.length)
+    }
+    if (!stringIncludesUpperCase(inputPassword.value)) {
+        errorPassword.innerHTML = `This field must include at least one uppercase`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+    }
+    if (!stringIncludesNumber(inputPassword.value)) {
+        errorPassword.innerHTML = `This field must include at least one number`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+    }
+    if (inputPassword.value.length >= 8
+        && stringIncludesNumber(inputPassword.value)
+        && !stringIncludesUpperCase(inputPassword.value)) {
+        errorPassword.innerHTML = `This field must include at least one uppercase`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+    }
+    if (inputPassword.value.length >= 8
+        && stringIncludesUpperCase(inputPassword.value)
+        && !stringIncludesNumber(inputPassword.value)) {
+        errorPassword.innerHTML = `This field must include at least one number`
+        divPassword.appendChild(errorPassword)
+        isValid = false
+    }
+
+    const errorConfirm = document.createElement(`label`)
+    if (inputPassword.value !== inputConfirm.value) {
+        errorConfirm.innerHTML = `Password did not match`
+        divConfirm.appendChild(errorConfirm)
+    }
+
+    const errorCourses = document.createElement(`label`)
+    if (allCheckboxes == ``) {
+        errorCourses.innerHTML = `You must choose at least one course`
+        divCourses.appendChild(errorCourses)
+    }
+    
+    if (isValid) {
+        
+        let user = {
+            userName: (inputName.value.substr(0,1).toUpperCase() + inputName.value.substr(1).toLowerCase()).trim() ,
+            userSurname: (inputSurname.value.substr(0,1).toUpperCase() + inputSurname.value.substr(1).toLowerCase()).trim(),
+            userPassword: inputPassword.value,
+            userCity: inputCities.value,
+            userGender: radioBtn,
+            userCourses: allCheckboxes
+        }
+        users.push(user)
+
+        users.forEach(user => addToDom(user))
+        
+        errorName.remove()
+        errorSurname.remove()
+        errorPassword.remove()
+        errorConfirm.remove()
+        errorCourses.remove()
+        inputName.value = ``
+        inputSurname.value = ``
+        inputPassword.value = ``
+        inputConfirm.value = ``
+        inputMale.checked = false
+        inputFemale.checked = false
+        inputCities.value = `-1`
+        checkboxes.forEach(check => {
+            check.checked = false
+        })
+    
+    }
+})
