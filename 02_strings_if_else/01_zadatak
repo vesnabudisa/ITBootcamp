@@ -1,0 +1,22 @@
+//1. Proveriti koji je string najduzi i ispisati samo njega
+
+let string1 = "neki prvi string"
+let string2 = "neki drugi string koji je i duzi string"
+let string3 = "neki treci string koji je dugacak"
+let string4 = "neki cetvrti"
+
+let a = string1.length
+let b = string2.length
+let c = string3.length
+let d = string4.length
+
+if (a > b && a > c && a > d) {
+    max = string1
+} else if (b > a && b > c && b > d) {
+    max = string2
+} else if (c > a && c > b && c > d) {
+    max = string3
+} else {
+    max = string4
+}
+console.log(`Najduzi string je:` + `"` + max + `".`)
