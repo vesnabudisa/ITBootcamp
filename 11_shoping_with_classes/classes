@@ -1,0 +1,296 @@
+/**
+Zadatak
+Treba implementirati simulaciju kupovine.
+
+U kupovini najpre postoje grupe proizvoda (ProductGroup), svaka grupa ima sledeca polja:
+    - title (naziv grupe, string koji nije prazan)
+    - vat (Value Added Tax ili na srpskom PDV, decimalni broj veci od nule manji od 100
+        predstavlja visinu PDV-a izrazenog u procentima koju ima svaki proizvod koji pripada grupi)
+
+Tu su i proizvodi (Product), svaki proizvod karakterise sledece:
+    - barCode (Bar kod proizvoda, celobrojna vrednost koja je veca od nule)
+    - title (naziv proizvoda, string koji nije prazan)
+    - price (decimalna vrednost veca od nule, predstavlja cenu proizvoda BEZ PDV-a!!!!!!)
+    - group (polje koje ukazuje na grupu kojoj proizvod pripada)
+
+Prilikom kupovine kreira se korpa (ShoppingCart) koja sadrzi stavke (ShoppingCartItem).
+Svaka korpa (ShoppingCart)  u sebi moze da ima vise stavki (ShoppingCartItem - a) i cuva ih u atributu "items".
+
+Svaka stavka korpe (ShoppingCartItem) sadrzi sledece:
+    - product (polje koje ukazuje na proizvod)
+    - quantity (decimalna vrednost veca od nule, koja ukazuje na kolicinu proizvoda u korpi)
+
+Svaka korpa (ShoppingCart) treba da ima sledecu funkcionalnost:
+    - addProduct(product, quantity = 1) - metoda kojom se neki proizvod (product)
+        dodaje u korpu za odredjenu kolicinu (quantity). Prilikom dodavanja u korpu, ukoliko proizvod
+        nije ranije bio dodat kreira se nova stavka korpe (ShoppingCartItem) i upisuje se kolicina koja se dodaje.
+        Ukoliko je proizvod ranije vec dodat u korpu, u stavci na kojoj se nalazi proizvod uvecava se postojeca kolicina za onu koju dodajemo.
+
+Na kraju kupovine odlazi se na kasu (Checkout).
+Kasa (Checkout) ima mogucnost da stampa fiskalni racun za korpu kroz sledecu funkcionalnost:
+    - printCheck(shoppingCart)
+Fiskalni racun se stampa u HTML tabeli koja ima sledeci format (data vam je html struktura sa tabelom samo sa hederom):
+
+*********************************************************************************************
+Prod Group	        Product	                Price	        Quantity	    VAT	    Subtotal
+Mlecni proizvodi	Mleko	                100	            2	            20	    200
+Mlecni proizvodi	Pavlaka	                50	            2	            10	    100
+Bezalkoholno pice	Sok od pomorandze 1l	120	            6	            40  	720
+Sveze meso	        Juneci but kg	        800	            0.5	            30	    400
+Konditori	        Cokolada Milka 300g	    280	            3	            100	    840
+
+VAT/TOTAL	200/2260
+*********************************************************************************************
+
+Jedan red u tabeli predstavlja jednu stavku iz korpe.
+U koloni "Prod. Group" se upisuje naziv grupe proizvoda.
+U koloni "Product" se upisuje naziv proizvoda.
+U koloni "Price" upisuje se cena po komadu SA PDV-om!!!
+U koloni "Quantity" upisuje se kolicina proizvoda u korpi tj stavci korpe.
+U koloni "VAT" upisuje se ukupan porez za unetu kolicinu proizvoda
+U kolonu "Subtotal" upisuje se ukupan iznos za unetu kolicinu proizvoda.
+
+Nakon ispisa stavki tabele u tfoot-u tabele ispisuje se ukupan porez i ukupnan iznos za celu korpu, u poslednje dve kolone.
+
+
+Kreirati dve grupe proizvoda i 4 proizvoda.
+Kreirati jednu korpu.
+Dodati svaki proizvod u korpu vise puta.
+Kreirati kasu i prikazati fiskalni racun.
+ *///
+//
+// let obj = {
+//     name: "Danilo",
+//     lastName: "strahinovic",
+//     group: {    //group instanceof ProductGroup
+
+//     }
+// }
+
+// let group = new ProductGroup('Title', 20)
+
+// let proizvod = new Product("title", 500, 101001, group)
+
+
+class ProductGroup {
+
+    #title
+    #vAT
+
+    constructor(title, vAT) {
+        this.title = title
+        this.vAT = vAT
+    }
+
+    get title() {
+        return this.#title
+    }
+
+    get vAT() {
+        return this.#vAT
+    }
+
+    set title(title) {
+        if (typeof title !== `string` || title == ``) {
+            console.log(`Naziv mora biti string i ne moze da bude prazan`)
+            return
+        }
+        this.#title = title
+    }
+
+    set vAT(vAT) {
+        if (typeof vAT !== `number` || vAT < 0 || vAT > 100) {
+            console.log(`VAT mora biti broj veci od nule a manji od 100!`)
+            return
+        } else {
+            this.#vAT = vAT
+        }
+    }
+
+
+
+
+}
+
+class Product {
+    #barcode
+    #title
+    #price
+    #group
+
+    constructor(barcode, title, price, group) {
+        this.barcode = barcode
+        this.title = title
+        this.price = price
+        this.group = group
+    }
+
+    get barcode() {
+        return this.#barcode
+    }
+
+    get title() {
+        return this.#title
+    }
+
+    get price() {
+        return this.#price
+    }
+
+    get group() {
+        return this.#group
+    }
+
+    set barcode(barcode) {
+        if (typeof barcode !== `number` || barcode < 0 || Math.ceil(barcode) !== barcode) {
+            console.log(`Barcode mora da bude celobrojna vrednost veca od 0!`)
+            return
+        }
+        this.#barcode = barcode
+    }
+
+    set title(title) {
+        if (typeof title !== `string` || title == ``) {
+            console.log(`Naziv mora biti string i ne moze da bude prazan`)
+            return
+        }
+        this.#title = title
+    }
+
+    set price(price) {
+        if (typeof price !== `number` || price < 0) {
+            console.log(`Price mora da bude celobrojna vrednost veca od 0!`)
+
+        }
+        this.#price = price
+    }
+
+    set group(group) {
+        if (!(group instanceof ProductGroup)) {
+            console.log(`Grupa mora biti instanca klase Product Group!`)
+            return
+        }
+        this.#group = group
+    }
+}
+
+
+class ShoppingCartItem {
+
+    #product
+    #quantity
+
+    constructor(product, quantity = 1) {
+        this.product = product
+        this.quantity = quantity
+    }
+
+    get product() {
+        return this.#product
+    }
+
+    get quantity() {
+        return this.#quantity
+    }
+
+    set product(product) {
+        if (!(product instanceof Product)) {
+            console.log(`Product mora da bude instanca klase Product`)
+            return
+        }
+        this.#product = product
+
+    }
+
+    set quantity(quantity) {
+        
+        if (typeof quantity !== `number` || quantity < 0) {
+            console.log(`Quantity mora da bude celobrojna vrednost veca od 0!`)
+            return
+        }
+        this.#quantity = quantity
+    }
+}
+
+class ShoppingCart {
+
+    items
+
+    constructor() {
+        this.items = []
+    }
+
+    addProduct(product, quantity = 1) {
+
+        let match = false
+
+        this.items.forEach(item => {
+            if (item.product.barcode == product.barcode) {
+                item.quantity += quantity
+                match = true
+            }
+        })
+
+        if (!match) {
+            this.items.push(new ShoppingCartItem(product, quantity))
+        }
+    }
+
+}
+
+class CheckOut {
+
+    constructor() {
+    }
+
+    printCheck(shoopingCart) {
+        let total = 0
+        let vATTotal = 0
+
+        let tbody = document.querySelector(`.tbody`)
+        let trItem = document.createElement(`tr`)
+        shoopingCart.items.forEach(item => {
+
+            let priceWithVAT = item.product.price * (item.product.group.vAT / 100 + 1)
+            let subtotal = priceWithVAT * item.quantity
+            total += subtotal
+            vATTotal += item.product.group.vAT
+
+            let trItem = document.createElement(`tr`)
+            trItem.innerHTML = `
+                <td>${item.product.group.title}</td>
+                <td>${item.product.title}</td>
+                <td>${priceWithVAT}</td>
+                <td>${item.quantity}</td>
+                <td>${item.product.group.vAT}</td>
+                <td>${subtotal}</td> `
+
+
+            tbody.append(trItem)
+        })
+        let trVATTotal = document.createElement(`tr`)
+        trVATTotal.innerHTML = `<td>VAT / TOTAL <br>${vATTotal} / ${total}</td>`
+
+        tbody.append(trItem, trVATTotal)
+    }
+}
+
+prodGroup1 = new ProductGroup(`Prehrambeni proizvod`, 10)
+prodGroup2 = new ProductGroup(`Bela tehnika`, 20)
+
+product1 = new Product(1234567, `Mleko`, 80, prodGroup1)
+product2 = new Product(2234567, `Brašno`, 70, prodGroup1)
+product3 = new Product(3234567, `Veš mašina`, 36000, prodGroup2)
+product4 = new Product(4234567, `Televizor`, 38000, prodGroup2)
+
+sCart = new ShoppingCart()
+
+sCart.addProduct(product1)
+sCart.addProduct(product2, 24)
+sCart.addProduct(product2, 16)
+sCart.addProduct(product3)
+sCart.addProduct(product4, 2)
+
+checkOut = new CheckOut()
+
+checkOut.printCheck(sCart)
