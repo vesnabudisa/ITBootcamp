@@ -1,0 +1,18 @@
+/* 1. Napisati funkciju koja na klik dodaje jedan red u tabeli. HTML kreirati proizvoljno.
+ */
+
+const nekaTabela =document.querySelector(`table`)
+const btnDodaj = document.querySelector(`button`)
+
+function dodajRed(tabela){
+btnDodaj.addEventListener(`click`,()=> {
+    const noviRed = document.createElement(`tr`)
+    noviRed.innerHTML=`<td>...</td>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>`
+    tabela.appendChild(noviRed)
+})
+}
+
+dodajRed(nekaTabela)
