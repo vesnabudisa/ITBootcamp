@@ -1,0 +1,107 @@
+/**
+ * 1. Napisati funkciju koja vrsi sumiranje i mnozenje jednog niza i vratiti te vrednosti u niz
+ * 
+ * 2. Napisati funkciju koja iz datog niza izbacuje null, undefined, NaN, 0, "" itd...
+ *
+ * 3. За првих 100 бројева исписати:
+ *       ако је дељив са 3  Fizz, са 5  Buzz, и са оба  FizzBuzz, у супротном Broj
+ *       Ако је дељив са 3,5,7 - FizzBuzzZazz
+ *       3,5 - FizzBuzz
+ *       3,7 - FizzZazz
+ *       5,7 - BuzzZazz
+ * 
+ * 4. Izvrsiti inverziju brojeva bez pomocne promenljive. 
+ *      Pr: x = 5 y = 9
+ *      Resenje: x = 9 y = 5
+ *      pom = "ne mozete koristiti"
+ * 
+ */
+
+
+{
+//1.
+
+  function SumiranjeIMnozenje(niz){
+    
+    let sum = 0
+    let mn = 1
+    for (let i = 0; i < niz.length; i++){
+        sum += niz[i]
+        mn *= niz[i]
+    }
+    return [sum,mn]
+  }
+
+  let niz1 = [1,2,3,4,5,6,7,8,9]
+
+  x1 = SumiranjeIMnozenje(niz1)
+
+  console.log(x1)
+
+}
+
+{
+//2.
+
+function ukloniNeupotrebljivo(niz) {
+  let  noviNiz = []
+  for (let i = 0; i < niz.length; i++) {
+    if (niz[i]) {
+      noviNiz.push(niz[i]);
+    }
+  }
+  return noviNiz
+}
+
+let nekiNiz =[1,2,2*`string`,,,3,4,`neki string`,]
+
+x = ukloniNeupotrebljivo(nekiNiz)
+
+console.log(x)
+}
+
+{
+//3.
+
+for ( let i = 0; i < 100; i++ ){
+  if (i % 3 == 0){
+    console.log(`Fizz`)
+  }
+  if( i % 5 == 0){
+    console.log(`Buzz`)
+  }
+  if ( i % 7 == 0){
+    console.log(`Zazz`)
+  }
+  if( i % (3 && 5) == 0){
+    console.log(`FizzBuzz`)
+  }
+  if( i % (3 && 7) == 0){
+    console.log(`FizzZazz`)
+  }
+  if( i % (5 && 7) == 0){
+    console.log(`BuzzZazz`)
+  }
+  if(i % (3 && 5 && 7) == 0){
+    console.log(`FizzBuzzZazz`)
+  }else{
+    console.log(i)
+  }
+}
+
+}
+
+{
+//4.
+
+let x = [1,2,3]
+let y = [4,5,6]
+
+for (let i = 0; i < y.length; i++) {
+  x.push(y[i])
+}
+y = x.splice(0,y.length)
+
+console.log(x,y);
+
+}
