@@ -1,0 +1,93 @@
+//1. Napisati funkciju koja ispisuje sve elemente datog niza koji su deljivi sa 5
+
+//2. Napraviti objekat pokemon koji sadrži sledeće informacije: (Napravite makar 4 različita pokemona)
+// * Ime 
+// * Vrsta 
+// * Sposobnosti (niz sposobnosti pokemona) 
+// * Karakteristike (objekat sa informacijama : napad (broj), odbrana (broj), brzina (broj))
+
+//(Napraviti niz od ovih objekata)
+
+//3. Napraviti funkciju koja prima niz gore napravljenih objekata i vraća jedan niz sposobnosti svih pokemona
+
+//4. Sortirati pokemone po brzini, rastuće.
+
+//5. Napraviti funkciju koja prima niz pokemona, poredi pokemone po jačini i vraća kao pobednika onog koji ima najveću jačinu napada.
+
+{
+    //1.
+
+    function divisibleBy5(array) {
+        let arr = []
+        array.forEach(el => {
+            if (el % 5 == 0)
+                arr.push(el)
+        });
+        console.log(arr)
+    }
+
+    array1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15]
+    divisibleBy5(array1)
+}
+
+{
+    //2.
+
+    let pokemons = [{
+        name: `Charmeleon`,
+        species: `Flame Pokemon`,
+        abilities: [`Blaze`, `Solar Power`],
+        caracteristics: { attack: 64, defence: 58, speed: 80, }
+    },
+    {
+        name: `Squirtle`,
+        species: `Dopey Pokemon`,
+        abilities: [`Torrent`, `Rain Dish`],
+        caracteristics: { attack: 48, defence: 65, speed: 43, }
+    },
+    {
+        name: `Slowpoke`,
+        species: `Vine Pokemon`,
+        abilities: [`Chlorophiyll`, `Leaf Guard`],
+        caracteristics: { attack: 55, defence: 115, speed: 60, }
+    },
+    {
+        name: `Tangela`,
+        species: `Vine Pokemon`,
+        abilities: [`Blaze`, `Solar Power`],
+        caracteristics: { attack: 66, defence: 58, speed: 85, }
+    }]
+
+
+    //3.
+
+    function pokemonsAbilities(array) {
+        let allAbilities = []
+        array.forEach(element => {
+            element.abilities.forEach(el => {
+                allAbilities.push(el)
+            })
+        })
+        return allAbilities
+    }
+
+    console.log(pokemonsAbilities(pokemons))
+
+    //4.
+
+    pokemons.sort(function (a, b) {
+        return a.caracteristics.speed - b.caracteristics.speed
+    })
+    console.log(pokemons)
+
+    //5.
+
+    function theStrongestAttack(array){
+        array.sort(function (a, b) {
+            return a.caracteristics.attack - b.caracteristics.attack
+        })
+        return pokemons[array.length-1]
+    }
+    console.log(theStrongestAttack(pokemons))
+    
+}
