@@ -1,0 +1,82 @@
+// Aplikacija TO-DO lista
+// Zavrsiti sa casa (26.08.2021) zapocetu aplikaziju za to-do listu koja treba da poseduje sledece funkcionalnosti:
+// 1. Podaci iz niza se prikazuju na stranici (lista to-do itema)
+// 2. Ima formu/input za unos novih podataka (to-do itema) u niz (automatski se azurira i prikaz na stranici)
+// 3. Svaki item sadrzi sledece :
+//      - id
+//      - opis (desc)
+//      - iformaciju da li je uradjen ili ne (done)
+// 4. Na stranici za svaki item se prikazuje text - opis i checkbox polje koje menja stanje itema (uradjeno-neuradjeno), 
+// kao i dugme za brisanje itema. Kada je item uradjen (done == true) tekst (desc) itema se precrta (ili se na neki drugi 
+// nacin naznaci da je item uradjen).
+
+import obj from "./service.js"
+
+
+
+const inputTxt = document.querySelector('#input-text')
+const forma = document.querySelector('#forma')
+const divLista = document.querySelector('#lista')
+
+
+const addToDom = (item) => {
+
+    const divItem = document.createElement('div')
+    divItem.classList.add('item')
+  
+    const checkbox = document.createElement(`input`)
+    checkbox.classList.add(`check`)
+    checkbox.id = `chek`
+    checkbox.type = `checkbox`
+    checkbox.value = item.id
+
+    const checkDone = document.createElement(`label`)
+    checkDone.innerHTML = `Done`
+
+    const inputTxt = document.createElement(`p`)
+    inputTxt.innerHTML = `<hr><h3>Things to do: ${item.desc}</h3>`
+
+    while(item.done){
+        checkbox.checked = true
+        inputTxt.innerHTML = (`<hr><h3>Things to do: ${item.desc}</h3>`).strike()
+        break;
+    }
+
+    checkbox.addEventListener(`change`,(event)=>{
+        if (event.target.checked){
+            inputTxt.innerHTML = (`<hr><h3>Things to do: ${item.desc}</h3>`).strike()
+        }else{
+            inputTxt.innerHTML = `<hr><h3>Things to do: ${item.desc}</h3>`
+        }
+    })
+    
+    const btnDel = document.createElement('button')
+    btnDel.innerHTML = 'Delete task'
+    btnDel.addEventListener('click', () => {
+        divItem.remove()
+        obj.deleteById(item.id)
+        console.log(obj.data)
+        
+    })
+    
+    divItem.append(inputTxt,checkbox,checkDone,btnDel)
+    divLista.append(divItem)
+
+    console.log(obj.data)
+}
+
+
+forma.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    let item = { desc: inputTxt.value, done: false}
+    obj.add(item)
+    console.log(obj.data)
+    addToDom(item)
+    inputTxt.value = ''
+
+})
+
+obj.data.forEach(data => addToDom(data))
+
+
