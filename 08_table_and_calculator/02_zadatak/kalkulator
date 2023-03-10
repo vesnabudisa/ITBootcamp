@@ -1,0 +1,36 @@
+/** 2. Napisati funkciju koja na klik dugmeta vrsi sabiranje 2 broja iz input polja i zbir ispisati na ekranu. HTML kreirati proizvoljno.
+ *
+ * 3. Nadovezivanje na predhodni zadatak. Dodati checkbox polje koje kada je selektovano prikazuje se kalkulator a obrnuto se skloni sa ekrana.
+ */
+
+const inputPrviBroj = document.querySelector(`#prviBroj`)
+const inputDrugiBroj = document.querySelector(`#drugiBroj`)
+const btnSaberi = document.querySelector(`button`)
+const kalkulatorCeo = document.createElement(`div`)
+const rezultat = document.createElement(`p`)
+const checkBox = document.querySelector(`#kalkulator`)
+
+
+btnSaberi.addEventListener(`click`, () => {
+    kalkulator(Number(inputPrviBroj.value), Number(inputDrugiBroj.value))
+    rezultat.innerHTML = `Rezultat je: ${rez}`
+    inputPrviBroj.value = ``
+    inputDrugiBroj.value = ``
+})
+
+
+function kalkulator(prviBroj, drugiBroj) {
+    return rez = prviBroj + drugiBroj
+    
+}
+kalkulatorCeo.append(inputPrviBroj,inputDrugiBroj,btnSaberi,rezultat)
+document.body.append(kalkulatorCeo,checkBox)
+
+checkBox.addEventListener(`change`,(event)=>{
+    if (event.target.checked){
+        kalkulatorCeo.style.visibility = `visible`
+    }else{
+        kalkulatorCeo.style.visibility = `hidden`
+    }
+    rezultat.innerHTML =``
+})
